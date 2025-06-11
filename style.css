@@ -1,0 +1,42 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-image: linear-gradient(#080808 2px, transparent 0), linear-gradient(90deg, #080808 2px, transparent 0), linear-gradient(#0c0c0c 1px, transparent 0), linear-gradient(90deg, #080808 1px, #000 0);
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+    color: #fff;
+    position: relative;
+    --bs-body-font-family: 'Inter', sans-serif !important;
+    --bs-border-color: rgb(60, 60, 60) !important;
+    --bs-body-bg: rgba(10, 10, 10, 0.7) !important;
+}
+h1 {
+    font-size: x-large !important;
+    margin: 0;
+}
+h4 {
+    color: rgb(180, 180, 180);
+    font-size: 12px;
+}
+h5 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+a {
+    text-decoration: none !important;
+}
+#latestUserInfo, #nextUserInfo {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 8px;
+    background-color: rgba(20, 20, 20, 0.8);
+}
+#status {
+    color: rgb(255, 100, 100);
+    margin-top: 10px;
+    font-size: 14px;
+}
+#latestAvatar, #nextAvatar {
+    max-width: 200px;
+    height: auto;
+    border-radius: 8

@@ -22,16 +22,24 @@ function fetchAvatar($userId) {
     return isset($data['data'][0]) ? $data['data'][0] : null;
 }
 
-// Start with user ID 10901
-$userId = 10901;
-$userResponse = fetchUser($userId);
+$latestUserId = 10900;
+$nextUserId = 10901;
 
-// Check if user exists or not
-if (isset($userResponse['errors']) && $userResponse['errors'][0]['message'] === 'NotFound') {
-    echo json_encode(['error' => 'NotFound']);
-} else {
-    $avatarResponse = fetchAvatar($userId);
-    $userResponse['avatar'] = $avatarResponse;
-    echo json_encode($userResponse);
-}
+// Fetch latest user (10900)
+$latestUserResponse = fetchUser($latestUserId);
+$latestAvatarResponse = fetchAvatar($latestUserId);
+
+// Fetch next user (10901)
+$nextUserResponse = fetchUser($nextUserId);
+$nextAvatarResponse = fetchAvatar($nextUserId);
+
+// Prepare response
+$response = [
+    'latestUser' => $latestUserResponse['errors'] ? null : $latestUserResponse,
+    'latestAvatar' => $latestAvatarResponse,
+    'nextUser' => $nextUserResponse['errors'] && $nextUserResponse['errors'][0]['message'] === 'NotFound' ? ['error' => 'NotFound'] : $nextUserResponse,
+    'nextAvatar' => $nextAvatarResponse
+];
+
+echo json_encode($response);
 ?>
